@@ -1,5 +1,3 @@
-let _ = require('lodash'); 
-
 const TYPE_MAP = {
     eth: '1',
     jingtum: '2',
@@ -8,7 +6,9 @@ const TYPE_MAP = {
 };
 
 let _getTypeByStr = typeStr => {
-    typeStr = _.trim(typeStr).toLowerCase();
+    let reTrim = /^\s+|\s+$/g;
+    typeStr += '';
+    typeStr = typeStr.replace(reTrim, '').toLowerCase();
     return TYPE_MAP[typeStr] || typeStr;
 }
 
@@ -17,7 +17,7 @@ let _getCallbackName = () => {
 }
 
 let tp = {
-    version: '1.0.0',
+    version: '1.0.1',
     isConnected: () => {
         return !!(window.TPJSBrigeClient || window.webkit);
     },
@@ -269,6 +269,5 @@ let tp = {
         }
     }
 };
-
 
 module.exports = tp;
