@@ -18,14 +18,14 @@ var _getCallbackName = function _getCallbackName() {
 };
 
 var tp = {
-    version: '1.0.2',
+    version: '1.1.2',
     isConnected: function isConnected() {
         return !!(window.TPJSBrigeClient || window.webkit);
     },
     eosTokenTransfer: function eosTokenTransfer(params) {
         // 必填项
         if (!params.from || !params.to || !params.amount || !params.tokenName || !params.contract || !params.precision) {
-            throw new Error('missing params; "from", "to", "amount", "tokenName","contract", "precision" is required ');
+            throw new Error('missing params; "from", "to", "amount", "tokenName","contract", "precision" is required');
         }
 
         return new Promise(function (resolve, reject) {
@@ -124,12 +124,7 @@ var tp = {
             }
         });
     },
-    getEosAccountInfo: function getEosAccountInfo(params) {
-
-        if (!params.account) {
-            throw new Error('missing params; "account" is required ');
-        }
-
+    getTableRows: function (params) {
         return new Promise(function (resolve, reject) {
             var tpCallbackFun = _getCallbackName();
 
@@ -138,20 +133,49 @@ var tp = {
                 try {
                     var res = JSON.parse(result);
                     resolve(res);
-                } catch (e) {
+                }
+                catch (e) {
                     reject(e);
                 }
-            };
+            }
             // android
             if (window.TPJSBrigeClient) {
-                window.TPJSBrigeClient.callMessage('getEosAccountInfo', JSON.stringify(params), tpCallbackFun);
+                window.TPJSBrigeClient.callMessage('getTableRows', JSON.stringify(params), tpCallbackFun);
             }
-            // ios
-            if (window.webkit) {
-                window.webkit.messageHandlers.getEosAccountInfo.postMessage({ body: { 'params': JSON.stringify(params), 'callback': tpCallbackFun } });
+            // iOS
+            else if (window.webkit) {
+                window.webkit.messageHandlers.getTableRows.postMessage({body:{'params': JSON.stringify(params), 'callback': tpCallbackFun}});
             }
         });
     },
+    // getEosAccountInfo: function getEosAccountInfo(params) {
+
+    //     if (!params.account) {
+    //         throw new Error('missing params; "account" is required ');
+    //     }
+
+    //     return new Promise(function (resolve, reject) {
+    //         var tpCallbackFun = _getCallbackName();
+
+    //         window[tpCallbackFun] = function (result) {
+
+    //             try {
+    //                 var res = JSON.parse(result);
+    //                 resolve(res);
+    //             } catch (e) {
+    //                 reject(e);
+    //             }
+    //         };
+    //         // android
+    //         if (window.TPJSBrigeClient) {
+    //             window.TPJSBrigeClient.callMessage('getEosAccountInfo', JSON.stringify(params), tpCallbackFun);
+    //         }
+    //         // ios
+    //         if (window.webkit) {
+    //             window.webkit.messageHandlers.getEosAccountInfo.postMessage({ body: { 'params': JSON.stringify(params), 'callback': tpCallbackFun } });
+    //         }
+    //     });
+    // },
     getDeviceId: function getDeviceId() {
         return new Promise(function (resolve, reject) {
             var tpCallbackFun = _getCallbackName();

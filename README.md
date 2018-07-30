@@ -17,7 +17,11 @@ npm install tp-eosjs
 
 ## Usage
 
+请在TokenPocket中使用该SDK。
+通过 APP中 关于我们->点击logo 8次开启 开发者模式，开启后可以在 发现-> Dapp Store 添加自定义URL
+
 Open your site in TokenPocket as a Dapp.
+In About Page, click the logo 8 times to open the develop mode. Then you can add your url in Dapp Store.
 
 ```javascript
 var tp = require('tp-eosjs')
@@ -26,7 +30,11 @@ console.log(tp.isConnected());
 
 ### 1.EOS
 
+EOS相关接口
+
 #### 1.1 tp.eosTokenTransfer
+
+eos代币转账
 
 ```javascript
 tp.eosTokenTransfer(params)
@@ -73,6 +81,8 @@ tp.eosTokenTransfer({
 
 
 #### 1.2 tp.pushEosAction
+
+执行Actions
 
 ```javascript
 tp.pushEosAction(params)
@@ -138,6 +148,8 @@ tp.pushEosAction({
 
 #### 1.3 tp.getEosBalance
 
+获取EOS某个代币的余额
+
 ```javascript
 tp.getEosBalance(params)
 ```
@@ -176,34 +188,51 @@ tp.getEosBalance({
 }
 ```
 
-#### 1.4 tp.getEosAccountInfo
+#### 1.4 tp.getTableRows
+
+获取合约内table数据
 
 ```javascript
-tp.getEosAccountInfo(params)
+tp.getTableRows(params)
 ```
 
 ##### Parameters
 
 `params`- `Object`:
-- `account`: `String`
+
+- `json`: `Boolean`
+- `code`: `String`
+- `scope`: `String`
+- `table`: `String`
+- `table_key`: `Stirng`
+- `lower_bound`: `String`
+- `upper_bound`: `String`
+- `limit`: `Number`
+
 
 ##### Returns
 
 `Object`:
 - `result`: `Boolean`
-- `data`: `Object`- Standard account object
+- `data`: `Object`
+    - `rows`: `Array`
 - `msg`: `String`
 
 ##### Example
 
 ```javascript
-tp.getEosAccountInfo({
-    account: 'itokenpocket'
+tp.getTableRows({
+    json: true,
+    code: 'abcabcabcabc',
+    scope: 'abcabcabcabc',
+    table: 'table1',
+    lower_bound: '10',
+    limit: 20
 }).then(console.log)
 
 > {
     result: true,
-    data:{"account_name":"itokenpocket",..., "is_proxy":0}},
+    data:{rows: [{a: 1, b: 'name' }, ...]},
     msg: 'success'
 }
 ```
@@ -211,7 +240,11 @@ tp.getEosAccountInfo({
 
 ### 2.Common
 
+通用接口
+
 #### 2.1 tp.getAppInfo
+
+获取APP的基本信息
 
 ```javascript
 tp.getAppInfo()
@@ -246,6 +279,8 @@ tp.getAppInfo().then(console.log)
 ```
 
 #### 2.2 tp.getWalletList
+
+获取对应底层的钱包列表
 
 ```javascript
 tp.getWalletList(params)
@@ -285,6 +320,8 @@ tp.getWalletList({
 
 #### 2.3 tp.getDeviceId
 
+获取用户设备ID
+
 ```javascript
 tp.getDeviceId()
 ```
@@ -305,6 +342,9 @@ tp.getDeviceId().then(console.log)
 ```
 
 #### 2.4 shareNewsToSNS
+
+分享到社交媒体
+
 ```javascript
 tp.shareNewsToSNS(params)
 ```
@@ -331,6 +371,9 @@ tp.shareNewsToSNS({
 
 
 #### 2.5 invokeQRScanner
+
+调用扫码
+
 ```javascript
 tp.invokeQRScanner()
 ```
