@@ -288,8 +288,7 @@ tp.getWalletList(params)
 
 ##### Parameters
 
-`params`- `Object`:
-- `type`: `String|Number` - `eth|1` for ETH, `jingtum|2` for Jingtum, `moac|3` for MOAC, `eos|4` for EOS
+`params`- `String|Number`: `eth|1` for ETH, `jingtum|2` for Jingtum, `moac|3` for MOAC, `eos|4` for EOS
 
 ##### Returns
 
@@ -300,16 +299,14 @@ tp.getWalletList(params)
 ##### Example
 
 ```javascript
-tp.getWalletList({
-    type: 1
-}).then(console.log)
+tp.getWalletList('eos').then(console.log)
 
 > {
     wallets: {
         'eos': [{
-            name: 'pk-1',
-            address: '0xaaaaaaa',
-            tokens: {'eth': 1000},
+            name: 'abcabcabcabc',
+            address: 'abcabcabcabc',
+            tokens: {'eos': 1000},
             ...
         },
         ...
