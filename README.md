@@ -57,7 +57,8 @@ tp.eosTokenTransfer(params)
 
 - `result`: `Boolean`
 
-- `data`: `String`- txhash
+- `data`: `Object`
+    - `transactionId`: `String`
 
 ##### Example
 
@@ -74,7 +75,7 @@ tp.eosTokenTransfer({
 
 > {
     result: true,
-    data: '7a505551a56fb1bbd2619d9e323772ee9d9ed12c54a8e19c381c559c949fed23'
+    data: {transactionId: 'b428357c7xxxxxxxxxxxxxx'}
 }
 ```
 
@@ -97,8 +98,8 @@ tp.pushEosAction(params)
 
 `Object`:
 - `result`: `Boolean`
-- `data`: `String`- txhash
-- `msg`: `String`
+- `data`: `Object`
+    - `transactionId`: `String`
 
 ##### Example
 
@@ -141,7 +142,7 @@ tp.pushEosAction({
 
 > {
     result: true,
-    data: '7a505551a56fb1bbd2619d9e323772ee9d9ed12c54a8e19c381c559c949fed23'
+    data: {transactionId: 'b428357c7xxxxxxxxxxxxxx'}
 }
 ```
 
