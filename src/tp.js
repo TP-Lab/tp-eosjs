@@ -14,11 +14,12 @@ var _getTypeByStr = function _getTypeByStr(typeStr) {
 };
 
 var _getCallbackName = function _getCallbackName() {
-    return 'tp_callback_' + new Date().getTime();
+    var ramdom = parseInt(Math.random()*100000);
+    return 'tp_callback_' + new Date().getTime() + ramdom;
 };
 
 var tp = {
-    version: '1.1.4',
+    version: '1.1.5',
     isConnected: function isConnected() {
         return !!(window.TPJSBrigeClient || window.webkit);
     },
