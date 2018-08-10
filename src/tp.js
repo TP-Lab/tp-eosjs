@@ -1,3 +1,4 @@
+var Promise = require('promise');
 
 var TYPE_MAP = {
     eth: '1',
@@ -19,7 +20,7 @@ var _getCallbackName = function _getCallbackName() {
 };
 
 var tp = {
-    version: '1.1.5',
+    version: '1.1.6',
     isConnected: function isConnected() {
         return !!(window.TPJSBrigeClient || window.webkit);
     },
@@ -157,34 +158,35 @@ var tp = {
             }
         });
     },
-    // getEosAccountInfo: function getEosAccountInfo(params) {
+    getEosAccountInfo: function getEosAccountInfo(params) {
 
-    //     if (!params.account) {
-    //         throw new Error('missing params; "account" is required ');
-    //     }
+        if (!params.account) {
+            throw new Error('missing params; "account" is required');
+        }
 
-    //     return new Promise(function (resolve, reject) {
-    //         var tpCallbackFun = _getCallbackName();
+        return new Promise(function (resolve, reject) {
+            var tpCallbackFun = _getCallbackName();
 
-    //         window[tpCallbackFun] = function (result) {
+            window[tpCallbackFun] = function (result) {
 
-    //             try {
-    //                 var res = JSON.parse(result);
-    //                 resolve(res);
-    //             } catch (e) {
-    //                 reject(e);
-    //             }
-    //         };
-    //         // android
-    //         if (window.TPJSBrigeClient) {
-    //             window.TPJSBrigeClient.callMessage('getEosAccountInfo', JSON.stringify(params), tpCallbackFun);
-    //         }
-    //         // ios
-    //         if (window.webkit) {
-    //             window.webkit.messageHandlers.getEosAccountInfo.postMessage({ body: { 'params': JSON.stringify(params), 'callback': tpCallbackFun } });
-    //         }
-    //     });
-    // },
+                try {
+                    var res = JSON.parse(result);
+                    resolve(res);
+                } catch (e) {
+                    reject(e);
+                }
+            };
+
+            // android
+            if (window.TPJSBrigeClient) {
+                window.TPJSBrigeClient.callMessage('getEosAccountInfo', JSON.stringify(params), tpCallbackFun);
+            }
+            // ios
+            if (window.webkit) {
+                window.webkit.messageHandlers.getEosAccountInfo.postMessage({ body: { 'params': JSON.stringify(params), 'callback': tpCallbackFun } });
+            }
+        });
+    },
     getDeviceId: function getDeviceId() {
         return new Promise(function (resolve, reject) {
             var tpCallbackFun = _getCallbackName();
