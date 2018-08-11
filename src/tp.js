@@ -20,7 +20,7 @@ var _getCallbackName = function _getCallbackName() {
 };
 
 var tp = {
-    version: '1.1.6',
+    version: '1.1.7',
     isConnected: function isConnected() {
         return !!(window.TPJSBrigeClient || window.webkit);
     },
@@ -36,6 +36,7 @@ var tp = {
             var tpCallbackFun = _getCallbackName();
 
             window[tpCallbackFun] = function (result) {
+                result = result.replace(/\r/ig, "").replace(/\n/ig,"");
 
                 try {
                     var res = JSON.parse(result);
@@ -62,6 +63,7 @@ var tp = {
             var tpCallbackFun = _getCallbackName();
 
             window[tpCallbackFun] = function (result) {
+                result = result.replace(/\r/ig, "").replace(/\n/ig,"");
 
                 try {
                     var res = JSON.parse(result);
@@ -88,7 +90,7 @@ var tp = {
             var tpCallbackFun = _getCallbackName();
 
             window[tpCallbackFun] = function (result) {
-
+                result = result.replace(/\r/ig, "").replace(/\n/ig,"");
                 try {
                     var res = JSON.parse(result);
                     resolve(res);
@@ -116,6 +118,7 @@ var tp = {
             var tpCallbackFun = _getCallbackName();
 
             window[tpCallbackFun] = function (result) {
+                result = result.replace(/\r/ig, "").replace(/\n/ig,"");
 
                 try {
                     var res = JSON.parse(result);
@@ -139,6 +142,7 @@ var tp = {
             var tpCallbackFun = _getCallbackName();
 
             window[tpCallbackFun] = function (result) {
+                result = result.replace(/\r/ig, "").replace(/\n/ig,"");
 
                 try {
                     var res = JSON.parse(result);
@@ -168,6 +172,7 @@ var tp = {
             var tpCallbackFun = _getCallbackName();
 
             window[tpCallbackFun] = function (result) {
+                result = result.replace(/\r/ig, "").replace(/\n/ig,"");
 
                 try {
                     var res = JSON.parse(result);
@@ -251,7 +256,7 @@ var tp = {
             var tpCallbackFun = _getCallbackName();
 
             window[tpCallbackFun] = function (result) {
-
+                result = result.replace(/\r/ig, "").replace(/\n/ig,"");
                 try {
                     var res = JSON.parse(result);
                     var data = res.qrResult || '';
