@@ -23,9 +23,18 @@ npm install tp-eosjs
 Open your site in TokenPocket as a Dapp.
 In About Page, click the logo 8 times to open the develop mode. Then you can add your url in Dapp Store.
 
+Npm
 ```javascript
 var tp = require('tp-eosjs')
 console.log(tp.isConnected());
+```
+
+Browser
+```html
+<script src="./dist/tp.js"></script>
+<script>
+    console.log(tp.isConnected());
+</script>
 ```
 
 ### 1.EOS
