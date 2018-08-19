@@ -15,14 +15,14 @@ var _getTypeByStr = function _getTypeByStr(typeStr) {
 };
 
 var _getCallbackName = function _getCallbackName() {
-    var ramdom = parseInt(Math.random()*100000);
+    var ramdom = parseInt(Math.random() * 100000);
     return 'tp_callback_' + new Date().getTime() + ramdom;
 };
 
 var tp = {
-    version: '1.1.7',
+    version: '1.1.9',
     isConnected: function isConnected() {
-        return !!(window.TPJSBrigeClient || window.webkit);
+        return !!(window.TPJSBrigeClient || (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.getDeviceId));
     },
     eosTokenTransfer: function eosTokenTransfer(params) {
         // 必填项
@@ -32,16 +32,16 @@ var tp = {
 
         params.amount = '' + params.amount;
 
-        return new Promise(function (resolve, reject) {
+        return new Promise(function(resolve, reject) {
             var tpCallbackFun = _getCallbackName();
 
-            window[tpCallbackFun] = function (result) {
-                result = result.replace(/\r/ig, "").replace(/\n/ig,"");
+            window[tpCallbackFun] = function(result) {
+                result = result.replace(/\r/ig, "").replace(/\n/ig, "");
 
                 try {
                     var res = JSON.parse(result);
                     if (res.result && !res.data.transactionId) {
-                        res.data = {transactionId: res.data};
+                        res.data = { transactionId: res.data };
                     }
                     resolve(res);
                 } catch (e) {
@@ -59,16 +59,16 @@ var tp = {
         });
     },
     pushEosAction: function pushEosAction(params) {
-        return new Promise(function (resolve, reject) {
+        return new Promise(function(resolve, reject) {
             var tpCallbackFun = _getCallbackName();
 
-            window[tpCallbackFun] = function (result) {
-                result = result.replace(/\r/ig, "").replace(/\n/ig,"");
+            window[tpCallbackFun] = function(result) {
+                result = result.replace(/\r/ig, "").replace(/\n/ig, "");
 
                 try {
                     var res = JSON.parse(result);
                     if (res.result && !res.data.transactionId) {
-                        res.data = {transactionId: res.data};
+                        res.data = { transactionId: res.data };
                     }
                     resolve(res);
                 } catch (e) {
@@ -81,16 +81,16 @@ var tp = {
             }
             // iOS
             else if (window.webkit) {
-                    window.webkit.messageHandlers.pushEosAction.postMessage({ body: { 'params': JSON.stringify(params), 'callback': tpCallbackFun } });
-                }
+                window.webkit.messageHandlers.pushEosAction.postMessage({ body: { 'params': JSON.stringify(params), 'callback': tpCallbackFun } });
+            }
         });
     },
     getAppInfo: function getAppInfo() {
-        return new Promise(function (resolve, reject) {
+        return new Promise(function(resolve, reject) {
             var tpCallbackFun = _getCallbackName();
 
-            window[tpCallbackFun] = function (result) {
-                result = result.replace(/\r/ig, "").replace(/\n/ig,"");
+            window[tpCallbackFun] = function(result) {
+                result = result.replace(/\r/ig, "").replace(/\n/ig, "");
                 try {
                     var res = JSON.parse(result);
                     resolve(res);
@@ -104,8 +104,8 @@ var tp = {
             }
             // iOS
             else if (window.webkit) {
-                    window.webkit.messageHandlers.getAppInfo.postMessage({ body: { 'params': '', 'callback': tpCallbackFun } });
-                }
+                window.webkit.messageHandlers.getAppInfo.postMessage({ body: { 'params': '', 'callback': tpCallbackFun } });
+            }
         });
     },
     getEosBalance: function getEosBalance(params) {
@@ -114,11 +114,11 @@ var tp = {
             throw new Error('missing params; "account", "contract", "symbol" is required ');
         }
 
-        return new Promise(function (resolve, reject) {
+        return new Promise(function(resolve, reject) {
             var tpCallbackFun = _getCallbackName();
 
-            window[tpCallbackFun] = function (result) {
-                result = result.replace(/\r/ig, "").replace(/\n/ig,"");
+            window[tpCallbackFun] = function(result) {
+                result = result.replace(/\r/ig, "").replace(/\n/ig, "");
 
                 try {
                     var res = JSON.parse(result);
@@ -137,28 +137,27 @@ var tp = {
             }
         });
     },
-    getTableRows: function (params) {
-        return new Promise(function (resolve, reject) {
+    getTableRows: function(params) {
+        return new Promise(function(resolve, reject) {
             var tpCallbackFun = _getCallbackName();
 
-            window[tpCallbackFun] = function (result) {
-                result = result.replace(/\r/ig, "").replace(/\n/ig,"");
+            window[tpCallbackFun] = function(result) {
+                    result = result.replace(/\r/ig, "").replace(/\n/ig, "");
 
-                try {
-                    var res = JSON.parse(result);
-                    resolve(res);
+                    try {
+                        var res = JSON.parse(result);
+                        resolve(res);
+                    } catch (e) {
+                        reject(e);
+                    }
                 }
-                catch (e) {
-                    reject(e);
-                }
-            }
-            // android
+                // android
             if (window.TPJSBrigeClient) {
                 window.TPJSBrigeClient.callMessage('getTableRows', JSON.stringify(params), tpCallbackFun);
             }
             // iOS
             else if (window.webkit) {
-                window.webkit.messageHandlers.getTableRows.postMessage({body:{'params': JSON.stringify(params), 'callback': tpCallbackFun}});
+                window.webkit.messageHandlers.getTableRows.postMessage({ body: { 'params': JSON.stringify(params), 'callback': tpCallbackFun } });
             }
         });
     },
@@ -168,11 +167,11 @@ var tp = {
             throw new Error('missing params; "account" is required');
         }
 
-        return new Promise(function (resolve, reject) {
+        return new Promise(function(resolve, reject) {
             var tpCallbackFun = _getCallbackName();
 
-            window[tpCallbackFun] = function (result) {
-                result = result.replace(/\r/ig, "").replace(/\n/ig,"");
+            window[tpCallbackFun] = function(result) {
+                result = result.replace(/\r/ig, "").replace(/\n/ig, "");
 
                 try {
                     var res = JSON.parse(result);
@@ -193,10 +192,10 @@ var tp = {
         });
     },
     getDeviceId: function getDeviceId() {
-        return new Promise(function (resolve, reject) {
+        return new Promise(function(resolve, reject) {
             var tpCallbackFun = _getCallbackName();
 
-            window[tpCallbackFun] = function (result) {
+            window[tpCallbackFun] = function(result) {
 
                 try {
                     var res = JSON.parse(result);
@@ -227,10 +226,10 @@ var tp = {
 
         var params = { type: type };
 
-        return new Promise(function (resolve, reject) {
+        return new Promise(function(resolve, reject) {
             var tpCallbackFun = _getCallbackName();
 
-            window[tpCallbackFun] = function (result) {
+            window[tpCallbackFun] = function(result) {
 
                 try {
 
@@ -252,11 +251,11 @@ var tp = {
         });
     },
     invokeQRScanner: function invokeQRScanner() {
-        return new Promise(function (resolve, reject) {
+        return new Promise(function(resolve, reject) {
             var tpCallbackFun = _getCallbackName();
 
-            window[tpCallbackFun] = function (result) {
-                result = result.replace(/\r/ig, "").replace(/\n/ig,"");
+            window[tpCallbackFun] = function(result) {
+                result = result.replace(/\r/ig, "").replace(/\n/ig, "");
                 try {
                     var res = JSON.parse(result);
                     var data = res.qrResult || '';
