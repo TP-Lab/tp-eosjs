@@ -1,6 +1,6 @@
 {
   "name": "tp-eosjs",
-  "version": "1.1.7",
+  "version": "1.1.8",
   "description": "tp js sdk for eos",
   "main": "index.js",
   "scripts": {
