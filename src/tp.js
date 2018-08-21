@@ -21,6 +21,7 @@ var _getCallbackName = function _getCallbackName() {
 };
 
 var _sendTpRequest = function(methodName, params, callback) {
+    // android
     if (window.TPJSBrigeClient) {
         window.TPJSBrigeClient.callMessage(methodName, params, callback);
     }

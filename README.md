@@ -6,14 +6,8 @@ Javascript SDK for TokenPocket EOS Dapp
 
 * [TokenPocket Website](https://www.mytokenpocket.vip/)
 
-![TokenPocket](http://tokenpocket.gz.bcebos.com/TokenPocket-logo-h.png)
+![TokenPocket](http://tokenpocket.gz.bcebos.com/TokenPocket-logo-h-300.png)
 
-
-## Installation
-
-```bash
-npm install tp-eosjs
-```
 
 ## Usage
 
