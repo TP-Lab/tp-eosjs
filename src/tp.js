@@ -32,7 +32,7 @@ var _sendTpRequest = function(methodName, params, callback) {
 }
 
 var tp = {
-    version: '1.2.3',
+    version: '1.3.3',
     isConnected: function() {
         return !!(window.TPJSBrigeClient || (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.getDeviceId));
     },
@@ -187,6 +187,7 @@ var tp = {
             _sendTpRequest('sign', JSON.stringify(params), tpCallbackFun);
         });
     },
+
     // eos
     eosTokenTransfer: function(params) {
         // 必填项
@@ -344,6 +345,23 @@ var tp = {
             _sendTpRequest('getEosTransactionRecord', JSON.stringify(params), tpCallbackFun);
 
         })
+    },
+    eosAuthSign: function(params) {
+        return new Promise(function(resolve, reject) {
+            var tpCallbackFun = _getCallbackName();
+
+            window[tpCallbackFun] = function(result) {
+                result = result.replace(/\r/ig, "").replace(/\n/ig, "");
+                try {
+                    var res = JSON.parse(result);
+                    resolve(res);
+                } catch (e) {
+                    reject(e);
+                }
+            }
+
+            _sendTpRequest('eosAuthSign', JSON.stringify(params), tpCallbackFun);
+        });
     }
 };
 
