@@ -905,7 +905,7 @@ var _sendTpRequest = function(methodName, params, callback) {
 }
 
 var tp = {
-    version: '1.3.2',
+    version: '1.3.3',
     isConnected: function() {
         return !!(window.TPJSBrigeClient || (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.getDeviceId));
     },
@@ -1227,6 +1227,10 @@ var tp = {
                 result = result.replace(/\r/ig, "").replace(/\n/ig, "");
                 try {
                     var res = JSON.parse(result);
+                    if (res.reslut && res.data.signData) {
+                        res.data.signdata = res.data.signData;
+                        delete res.data.signData;
+                    }
                     resolve(res);
                 } catch (e) {
                     reject(e);

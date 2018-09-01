@@ -41,6 +41,7 @@ Browser
     - [1.5 tp.getEosTableRows](#15-tpgeteostablerows)
     - [1.6 tp.getEosAccountInfo](#16-tpgeteosaccountinfo)
     - [1.7 tp.getEosTransactionRecord](#17-tpgeteostransactionrecord)
+    - [1.8 tp.eosAuthSign](#18-tpeosauthsign)
 - [2. COMMON](#2-common)
     - [2.1 tp.getAppInfo](#21-tpgetappinfo)
     - [2.2 tp.getWalletList](#22-tpgetwalletlist)
@@ -357,6 +358,59 @@ tp.getEosTransactionRecord({
     msg: 'success'
 }
 ```
+
+
+#### 1.8 tp.eosAuthSign
+
+```javascript
+tp.eosAuthSign(params)
+```
+
+##### Parameters
+
+`params`- `Object`:
+- `from`: `String` - eos account name
+- `publicKey`: `String` 
+- `signdata`: `String`
+
+
+##### Returns
+
+`Object`:
+- `result`: `Boolean`
+- `data`: `Object`
+    - `signature` : `String`
+    - `ref`: `String` - 'TokenPocket'
+    - `signdata` : `String`
+    - `timestamp`: `String`
+    - `wallet` : `String` - eos account name
+- `msg`: `String`
+
+##### Example
+
+```javascript
+tp.eosAuthSign({
+    from: 'itokenpocket',
+    publicKey: 'EOS13we3sbereewwwwww',
+    signdata: 'something to sign'
+}).then(console.log)
+
+> {
+    result: true,
+    data: {
+        signature: 'SIG_EBEFWA-AFEBEf-eeee-aaaaa-eeeeea23d',
+        timestamp: '1534735280',
+        ref: 'TokenPocket',
+        signdata: 'something to sign',
+        wallet: 'itokenpocket'
+    },
+    msg: 'success'
+}
+```
+
+
+
+
 
 
 
