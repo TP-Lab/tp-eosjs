@@ -32,7 +32,7 @@ var _sendTpRequest = function(methodName, params, callback) {
 }
 
 var tp = {
-    version: '1.3.3',
+    version: '1.3.4',
     isConnected: function() {
         return !!(window.TPJSBrigeClient || (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.getDeviceId));
     },
@@ -191,7 +191,7 @@ var tp = {
     // eos
     eosTokenTransfer: function(params) {
         // 必填项
-        if (!params.from || !params.to || !params.amount || !params.tokenName || !params.contract || !params.precision) {
+        if (!params.from || !params.to || !params.amount || !params.tokenName || !params.contract || params.precision === undefined) {
             throw new Error('missing params; "from", "to", "amount", "tokenName","contract", "precision" is required ');
         }
 
