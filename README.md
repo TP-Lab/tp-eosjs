@@ -58,6 +58,9 @@ Browser
     - [2.6 tp.getCurrentWallet](#26-tpgetcurrentwallet)
     - [2.7 tp.getWallets](#27-tpgetwallets)
     - [2.8 tp.sign](#28-tpsign)
+    - [3.9 tp.back](#39-tpback)
+    - [3.10 tp.close](#310-tpclose)
+    - [3.11 tp.fullScreen](#311-tpfullscreen)
 
 <!-- /TOC -->
 
@@ -682,3 +685,50 @@ tp.sign({
 }
 ```
 
+
+#### 3.9 tp.back
+
+```javascript
+tp.back()
+```
+
+##### Example
+
+```javascript
+tp.back()
+
+```
+
+#### 3.10 tp.close
+
+```javascript
+tp.close()
+```
+
+##### Example
+
+```javascript
+tp.close()
+
+```
+
+
+#### 3.11 tp.fullScreen
+
+```javascript
+tp.fullScreen(params)
+```
+
+##### Parameters
+
+`params`- `Object`:
+- `fullScreen`: `Number` 1 - fullScreen,  0 - cancel
+
+
+##### Example
+
+```javascript
+tp.fullScreen({
+    fullScreen: 0
+})
+```
