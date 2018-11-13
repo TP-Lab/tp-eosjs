@@ -32,7 +32,7 @@ var _sendTpRequest = function(methodName, params, callback) {
 }
 
 var tp = {
-    version: '1.4.1',
+    version: '1.4.2',
     isConnected: function() {
         return !!(window.TPJSBrigeClient || (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.getDeviceId));
     },
@@ -202,7 +202,7 @@ var tp = {
         if (!type) {
             throw new Error('type invalid');
         }
-        
+
         var params = {blockChainId: type};
 
         _sendTpRequest('importWallet', JSON.stringify(params), '');

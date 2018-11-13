@@ -58,10 +58,10 @@ Browser
     - [2.6 tp.getCurrentWallet  (Recommended)](#26-tpgetcurrentwallet--recommended)
     - [2.7 tp.getWallets  (Deprecated)](#27-tpgetwallets--deprecated)
     - [2.8 tp.sign](#28-tpsign)
-    - [3.9 tp.back](#39-tpback)
-    - [3.10 tp.close](#310-tpclose)
-    - [3.11 tp.fullScreen](#311-tpfullscreen)
-    - [3.12 tp.importWallet](#312-tpimportwallet)
+    - [2.9 tp.back](#29-tpback)
+    - [2.10 tp.close](#210-tpclose)
+    - [2.11 tp.fullScreen](#211-tpfullscreen)
+    - [2.12 tp.importWallet](#212-tpimportwallet)
 
 <!-- /TOC -->
 
@@ -696,7 +696,7 @@ tp.sign({
 ```
 
 
-#### 3.9 tp.back
+#### 2.9 tp.back
 
 后退
 back forward
@@ -712,7 +712,7 @@ tp.back()
 
 ```
 
-#### 3.10 tp.close
+#### 2.10 tp.close
 
 关闭应用
 close the dapp
@@ -729,7 +729,7 @@ tp.close()
 ```
 
 
-#### 3.11 tp.fullScreen
+#### 2.11 tp.fullScreen
 
 全屏应用
 fullScreen the dapp
@@ -753,7 +753,7 @@ tp.fullScreen({
 ```
 
 
-#### 3.12 tp.importWallet
+#### 2.12 tp.importWallet
 
 钱包导入界面 
 
