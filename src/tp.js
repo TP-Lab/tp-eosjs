@@ -32,7 +32,7 @@ var _sendTpRequest = function(methodName, params, callback) {
 }
 
 var tp = {
-    version: '1.4.0',
+    version: '1.4.1',
     isConnected: function() {
         return !!(window.TPJSBrigeClient || (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.getDeviceId));
     },
@@ -195,6 +195,17 @@ var tp = {
     },
     close: function() {
         _sendTpRequest('close', '', '');
+    },
+    importWallet: function(type) {
+        type = _getTypeByStr(type);
+
+        if (!type) {
+            throw new Error('type invalid');
+        }
+        
+        var params = {blockChainId: type};
+
+        _sendTpRequest('importWallet', JSON.stringify(params), '');
     },
     // eos
     eosTokenTransfer: function(params) {

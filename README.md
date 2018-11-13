@@ -51,16 +51,17 @@ Browser
     - [1.8 tp.eosAuthSign](#18-tpeosauthsign)
 - [2. COMMON](#2-common)
     - [2.1 tp.getAppInfo](#21-tpgetappinfo)
-    - [2.2 tp.getWalletList](#22-tpgetwalletlist)
+    - [2.2 tp.getWalletList (Deprecated)](#22-tpgetwalletlist-deprecated)
     - [2.3 tp.getDeviceId](#23-tpgetdeviceid)
     - [2.4 tp.shareNewsToSNS](#24-tpsharenewstosns)
     - [2.5 tp.invokeQRScanner](#25-tpinvokeqrscanner)
-    - [2.6 tp.getCurrentWallet](#26-tpgetcurrentwallet)
-    - [2.7 tp.getWallets](#27-tpgetwallets)
+    - [2.6 tp.getCurrentWallet  (Recommended)](#26-tpgetcurrentwallet--recommended)
+    - [2.7 tp.getWallets  (Deprecated)](#27-tpgetwallets--deprecated)
     - [2.8 tp.sign](#28-tpsign)
     - [3.9 tp.back](#39-tpback)
     - [3.10 tp.close](#310-tpclose)
     - [3.11 tp.fullScreen](#311-tpfullscreen)
+    - [3.12 tp.importWallet](#312-tpimportwallet)
 
 <!-- /TOC -->
 
@@ -464,7 +465,7 @@ tp.getAppInfo().then(console.log)
 }
 ```
 
-#### 2.2 tp.getWalletList
+#### 2.2 tp.getWalletList (Deprecated)
 
 ```javascript
 tp.getWalletList(params)
@@ -521,6 +522,10 @@ tp.getDeviceId().then(console.log)
 ```
 
 #### 2.4 tp.shareNewsToSNS
+
+分享
+share to SNS
+
 ```javascript
 tp.shareNewsToSNS(params)
 ```
@@ -547,6 +552,10 @@ tp.shareNewsToSNS({
 
 
 #### 2.5 tp.invokeQRScanner
+
+扫码
+Scan the QRcode
+
 ```javascript
 tp.invokeQRScanner()
 ```
@@ -563,7 +572,7 @@ tp.invokeQRScanner().then(console.log)
 > "abcdefg"
 ```
 
-#### 2.6 tp.getCurrentWallet
+#### 2.6 tp.getCurrentWallet  (Recommended)
 
 获取用户当前钱包
 
@@ -600,9 +609,10 @@ tp.getCurrentWallet().then(console.log)
 ```
 
 
-#### 2.7 tp.getWallets
+#### 2.7 tp.getWallets  (Deprecated)
 
 获取用户钱包列表
+Get user's wallet list
 
 `1` for ETH, `2` for Jingtum, `3` for MOAC, `4` for EOS , `5` for ENU
 
@@ -688,6 +698,9 @@ tp.sign({
 
 #### 3.9 tp.back
 
+后退
+back forward
+
 ```javascript
 tp.back()
 ```
@@ -700,6 +713,9 @@ tp.back()
 ```
 
 #### 3.10 tp.close
+
+关闭应用
+close the dapp
 
 ```javascript
 tp.close()
@@ -714,6 +730,9 @@ tp.close()
 
 
 #### 3.11 tp.fullScreen
+
+全屏应用
+fullScreen the dapp
 
 ```javascript
 tp.fullScreen(params)
@@ -731,4 +750,26 @@ tp.fullScreen(params)
 tp.fullScreen({
     fullScreen: 0
 })
+```
+
+
+#### 3.12 tp.importWallet
+
+钱包导入界面 
+
+invoke the wallet importing window
+
+```javascript
+tp.importWallet(blockchain)
+```
+
+##### Parameters
+
+`blockchain`- `String`: 'eos' | 'eth' | 'enu' | 'moac'
+
+
+##### Example
+
+```javascript
+tp.importWallet('eos');
 ```
