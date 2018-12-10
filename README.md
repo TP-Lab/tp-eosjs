@@ -38,33 +38,6 @@ Browser
 </script>
 ```
 
-<!-- TOC -->
-
-- [1.EOS](#1eos)
-    - [1.1 tp.eosTokenTransfer](#11-tpeostokentransfer)
-    - [1.2 tp.pushEosAction](#12-tppusheosaction)
-    - [1.3 tp.getEosBalance](#13-tpgeteosbalance)
-    - [1.4 tp.getTableRows (Deprecated)](#14-tpgettablerows-deprecated)
-    - [1.5 tp.getEosTableRows](#15-tpgeteostablerows)
-    - [1.6 tp.getEosAccountInfo](#16-tpgeteosaccountinfo)
-    - [1.7 tp.getEosTransactionRecord](#17-tpgeteostransactionrecord)
-    - [1.8 tp.eosAuthSign](#18-tpeosauthsign)
-- [2. COMMON](#2-common)
-    - [2.1 tp.getAppInfo](#21-tpgetappinfo)
-    - [2.2 tp.getWalletList (Deprecated)](#22-tpgetwalletlist-deprecated)
-    - [2.3 tp.getDeviceId](#23-tpgetdeviceid)
-    - [2.4 tp.shareNewsToSNS](#24-tpsharenewstosns)
-    - [2.5 tp.invokeQRScanner](#25-tpinvokeqrscanner)
-    - [2.6 tp.getCurrentWallet  (Recommended)](#26-tpgetcurrentwallet--recommended)
-    - [2.7 tp.getWallets  (Deprecated)](#27-tpgetwallets--deprecated)
-    - [2.8 tp.sign](#28-tpsign)
-    - [2.9 tp.back](#29-tpback)
-    - [2.10 tp.close](#210-tpclose)
-    - [2.11 tp.fullScreen](#211-tpfullscreen)
-    - [2.12 tp.importWallet](#212-tpimportwallet)
-
-<!-- /TOC -->
-
 ### 1.EOS
 
 #### 1.1 tp.eosTokenTransfer
@@ -590,6 +563,7 @@ tp.getCurrentWallet()
     - `name`: `String`
     - `address`: `String`
     - `blockchain_id`: `Number`
+    - `permissions`: `Array`
 - `msg`: `String`
 
 ##### Example
@@ -602,7 +576,8 @@ tp.getCurrentWallet().then(console.log)
     data: {
         name: 'itokenpocket',
         address: 'EOSaaaaaaaaabbbbbbbb',
-        blockchain_id: 4
+        blockchain_id: 4,
+        permissions: ['active']
     },
     msg: 'success'
 }
