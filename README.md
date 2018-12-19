@@ -38,6 +38,8 @@ Browser
 </script>
 ```
 
+
+
 ### 1.EOS
 
 #### 1.1 tp.eosTokenTransfer
@@ -732,7 +734,7 @@ tp.fullScreen({
 
 钱包导入界面 
 
-invoke the wallet importing window
+Invoke the wallet importing window
 
 ```javascript
 tp.importWallet(blockchain)
@@ -747,4 +749,30 @@ tp.importWallet(blockchain)
 
 ```javascript
 tp.importWallet('eos');
+```
+
+
+#### 2.13 tp.setMenubar
+
+全屏时 设置dapp浏览器导航条可见性
+
+When the `fullscreen` is on, set the dapp browser's navbar visiblity
+
+```javascript
+tp.setMenubar(params)
+```
+
+##### Parameters
+
+`params`- `Object`:
+- `flag`: `Number` 1 - open,  0 - close(default)
+
+
+
+##### Example
+
+```javascript
+tp.setMenubar({
+    flag: 1
+});
 ```
