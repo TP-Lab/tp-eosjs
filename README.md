@@ -16,6 +16,8 @@ Javascript SDK for TokenPocket EOS Dapp
 ![TokenPocket](http://tokenpocket.gz.bcebos.com/TokenPocket-logo-h-300.png)
 
 
+* We also have an [Android&iOS SDK](https://github.com/TP-Lab/Mobile-SDK)
+
 ## Usage
 
 请在TokenPocket中使用该SDK。
@@ -37,6 +39,7 @@ Browser
     console.log(tp.isConnected());
 </script>
 ```
+
 
 
 
@@ -675,7 +678,7 @@ tp.sign({
 
 #### 2.9 tp.back
 
-后退
+页面后退一页
 back forward
 
 ```javascript
@@ -691,7 +694,7 @@ tp.back()
 
 #### 2.10 tp.close
 
-关闭应用
+关闭当前Dapp页面
 close the dapp
 
 ```javascript
