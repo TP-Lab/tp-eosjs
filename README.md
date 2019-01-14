@@ -1,3 +1,4 @@
+
 # tp-eosjs
 
 
@@ -39,6 +40,7 @@ Browser
     console.log(tp.isConnected());
 </script>
 ```
+
 
 
 
@@ -779,3 +781,321 @@ tp.setMenubar({
     flag: 1
 });
 ```
+
+
+#### 3.1 tp.tokenTransfer
+
+```javascript
+tp.tokenTransfer(params)
+```
+
+##### Parameters
+
+`params`- `Object`:
+- `blockchain`: `String` - 'eos' | 'bos'
+- `from`: `String`
+- `to`: `String`
+- `amount`: `String|Number`
+- `tokenName`: `String`
+- `precision`: `Number|String`
+- `contract`: `String`
+- `memo`: `String`- (optional),
+- `address`: `String` - public key for current account
+
+##### Returns
+
+`Object`:
+
+- `result`: `Boolean`
+
+- `data`: `Object`
+    - `transactionId` : `Stirng`
+
+##### Example
+
+```javascript
+tp.eosTokenTransfer({
+    blockchain: 'eos',
+    from: 'abcabcabcabc',
+    to: 'itokenpocket',
+    amount: '0.0100',
+    tokenName: 'EOS',
+    precision: 4,
+    contract: 'eosio.token',
+    memo: 'test',
+    address: 'EOS7ds9A9FGDsKrdymQ4ynKbMgbCVaaaaaaaaaaa'
+}).then(console.log)
+
+> {
+    result: true,
+    data: {transactionId: 'b428357c7xxxxxxxxxxxxxx'}
+}
+```
+
+
+
+#### 3.2 tp.pushAction
+
+```javascript
+tp.pushAction(params)
+```
+
+##### Parameters
+
+`params`- `Object`:
+- `blockchain`: `String` - 'eos' | 'bos'
+- `actions`: `Array`- Standard eos actions
+- `account`: `String` - current account
+- `address`: `String` - public key for current account
+
+##### Returns
+
+`Object`:
+- `result`: `Boolean`
+- `data`: `Object`
+    - `transactionId` : `Stirng`
+
+##### Example
+
+```javascript
+tp.pushAction({
+    blockchain: 'eos',
+    actions: [
+        {
+            account: 'eosio.token',
+            name: 'transfer',
+            authorization: [{
+                actor: 'aaaabbbbcccc',
+                permission: 'active'
+            }],
+            data: {
+                from: 'aaaabbbbcccc',
+                to: 'itokenpocket',
+                quantity: '1.3000 EOS',
+                memo: 'something to say'
+            }
+         },
+         {
+            account: "eosio",
+            name: "delegatebw",
+            authorization: [
+                {
+                actor: 'aaaabbbbcccc',
+                permission: "active"
+                }
+            ],
+            data: {
+                from: 'aaaabbbbcccc',
+                receiver: 'itokenpocket',
+                stake_net_quantity: "0.0100 EOS",
+                stake_cpu_quantity: "0.0100 EOS",
+                transfer: 0
+            }
+        }
+    ],
+    address: 'EOS7ds9A9FGDsKrdymQ4ynKbMgbCVaaaaaaaaaaa',
+    account: 'aaaabbbbcccc'
+}).then(console.log)
+
+> {
+    result: true,
+    data: {transactionId: 'b428357c7xxxxxxxxxxxxxx'}
+}
+```
+
+
+#### 3.3 tp.getBalance
+
+```javascript
+tp.getBalance(params)
+```
+
+##### Parameters
+
+`params`- `Object`
+- `blockchain`: `String` - 'eos' | 'bos'
+- `account`: `String`
+- `contract`: `String`
+- `symbol`: `String`
+
+##### Returns
+
+`Object`:
+- `result`: `Boolean`
+- `data`: `Object`
+    - `symbol`: `String`
+    - `balance`: `String`
+    - `contract`: `String`
+    - `account`: `String`
+- `msg`: `String`
+
+##### Example
+
+```javascript
+tp.getBalance({
+    blockchain: 'eos',
+    account: 'itokenpocket',
+    contract: 'eosio.token',
+    symbol: 'EOS'
+}).then(console.log)
+
+> {
+    result: true,
+    data:{"symbol":"EOS","balance":"["142.2648 EOS"]","contract":"eosio.token","account":"itokenpocket"},
+    msg: 'success'
+}
+```
+
+#### 3.4 tp.getTableRows 
+
+获取合约内table数据
+
+```javascript
+tp.getTableRows(params)
+```
+
+##### Parameters
+
+`params`- `Object`:
+- `blockchain`: `String`  - 'eos' | 'bos'
+- `json`: `Boolean`
+- `code`: `String`
+- `scope`: `String`
+- `table`: `String`
+- `table_key`: `Stirng`
+- `lower_bound`: `String`
+- `upper_bound`: `String`
+- `limit`: `Number`
+
+
+##### Returns
+
+`Object`:
+- `result`: `Boolean`
+- `data`: `Object`
+    - `rows`: `Array`
+    - `more`: `boolean`
+- `msg`: `String`
+
+##### Example
+
+```javascript
+tp.getTableRows({
+    blockchain: 'eos',
+    json: true,
+    code: 'abcabcabcabc',
+    scope: 'abcabcabcabc',
+    table: 'table1',
+    lower_bound: '10',
+    limit: 20
+}).then(console.log)
+
+> {
+    result: true,
+    data:{
+        rows: [{a: 1, b: 'name' }, ...], 
+        more: true
+    },
+    msg: 'success'
+}
+```
+
+#### 3.5 tp.getAccountInfo
+```javascript
+tp.getAccountInfo(params)
+```
+
+##### Parameters
+
+`params`- `Object`:
+- `account`: `String`
+- `blockchain`: `String`  - 'eos' | 'bos'
+
+##### Returns
+
+`Object`:
+- `result`: `Boolean`
+- `data`: `Object`- Standard account object
+- `msg`: `String`
+
+##### Example
+
+```javascript
+tp.getEosAccountInfo({
+    account: 'itokenpocket',
+    blockchain: 'eos'
+}).then(console.log)
+
+> {
+    result: true,
+    data:{"account_name":"itokenpocket",..., "is_proxy":0}},
+    msg: 'success'
+}
+```
+
+#### 3.6 tp.getTransactionRecord
+
+```javascript
+tp.getTransactionRecord(params)
+```
+
+##### Parameters
+
+`params`- `Object`:
+- `blockchain`: `String` - 'eos' | 'bos'
+- `account`: `String`
+- `start`: `Number` - default: 0
+- `count`: `Number` - default: 10
+- `sort`: `String` - 'desc | asc'  default: desc
+- `token`: `String` - optional
+- `contract`: `String` - optional
+
+##### Returns
+
+`Object`:
+- `result`: `Boolean`
+- `data`: `Object`- Standard account object
+- `msg`: `String`
+
+##### Example
+
+```javascript
+tp.getEosTransactionRecord({
+    blockchain: 'eos',
+    start: 10,
+    count: 20,
+    account: 'itokenpocket',
+    token: 'EOS',
+    sort: 'desc',
+    contract: 'eosio.token'
+}).then(console.log)
+
+> {
+    result: true,
+    data: [{
+        "title": "",
+        "comment": "",
+        "hid": "4bd63a191a1e3e00f13fe6df55d0c08803800a5e7cd0d0b15c92d52b3c42285e",
+        "producer": "bp4",
+        "timestamp": 1531578890,
+        "action_index": 2,
+        "account": "eosio",
+        "name": "delegatebw",
+        "from": "tokenpocket1",
+        "to": "clementtes43",
+        "blockNum": 4390980,
+        "quantity": "0.2000000000 EOS",
+        "count": "0.2000000000",
+        "symbol": "EOS",
+        "memo": "",
+        "maximum_upply": "",
+        "ram_price": "",
+        "bytes": "",
+        "status": 1,
+        "data": ""，
+        real_value:"0.2000000000"
+        }, ...],
+    msg: 'success'
+}
+```
+
