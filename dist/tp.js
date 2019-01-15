@@ -910,7 +910,7 @@ var _sendTpRequest = function (methodName, params, callback) {
 }
 
 var tp = {
-    version: '1.5.0',
+    version: '1.5.1',
     isConnected: function () {
         return !!(window.TPJSBrigeClient || (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.getDeviceId));
     },
@@ -1384,6 +1384,27 @@ var tp = {
 
             _sendTpRequest('getEosTransactionRecord', JSON.stringify(params), tpCallbackFun);
         })
+    },
+    authSign: function (params) {
+        return new Promise(function (resolve, reject) {
+            var tpCallbackFun = _getCallbackName();
+
+            window[tpCallbackFun] = function (result) {
+                result = result.replace(/\r/ig, "").replace(/\n/ig, "");
+                try {
+                    var res = JSON.parse(result);
+                    if (res.reslut && res.data.signData) {
+                        res.data.signdata = res.data.signData;
+                        delete res.data.signData;
+                    }
+                    resolve(res);
+                } catch (e) {
+                    reject(e);
+                }
+            }
+
+            _sendTpRequest('authSign', JSON.stringify(params), tpCallbackFun);
+        });
     }
 };
 

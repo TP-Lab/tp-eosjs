@@ -204,9 +204,8 @@ tp.getEosBalance({
 }
 ```
 
-#### 1.4 tp.getTableRows (Deprecated)
 
-#### 1.5 tp.getEosTableRows
+#### 1.4 tp.getEosTableRows
 
 获取合约内table数据
 
@@ -240,7 +239,7 @@ tp.getEosTableRows(params)
 ##### Example
 
 ```javascript
-tp.getTableRows({
+tp.getEosTableRows({
     json: true,
     code: 'abcabcabcabc',
     scope: 'abcabcabcabc',
@@ -259,7 +258,7 @@ tp.getTableRows({
 }
 ```
 
-#### 1.6 tp.getEosAccountInfo
+#### 1.5 tp.getEosAccountInfo
 ```javascript
 tp.getEosAccountInfo(params)
 ```
@@ -290,7 +289,7 @@ tp.getEosAccountInfo({
 }
 ```
 
-#### 1.7 tp.getEosTransactionRecord
+#### 1.6 tp.getEosTransactionRecord
 
 ```javascript
 tp.getEosTransactionRecord(params)
@@ -355,7 +354,7 @@ tp.getEosTransactionRecord({
 ```
 
 
-#### 1.8 tp.eosAuthSign
+#### 1.7 tp.eosAuthSign
 
 ```javascript
 tp.eosAuthSign(params)
@@ -814,7 +813,7 @@ tp.tokenTransfer(params)
 ##### Example
 
 ```javascript
-tp.eosTokenTransfer({
+tp.tokenTransfer({
     blockchain: 'eos',
     from: 'abcabcabcabc',
     to: 'itokenpocket',
@@ -1099,3 +1098,53 @@ tp.getEosTransactionRecord({
 }
 ```
 
+
+#### 3.7 tp.authSign
+
+```javascript
+tp.authSign(params)
+```
+
+##### Parameters
+
+`params`- `Object`:
+- `blockchain`: `String` - 'eos' | 'bos'
+- `from`: `String` -  account name
+- `publicKey`: `String` 
+- `signdata`: `String`
+
+
+##### Returns
+
+`Object`:
+- `result`: `Boolean`
+- `data`: `Object`
+    - `signature` : `String`
+    - `ref`: `String` - 'TokenPocket'
+    - `signdata` : `String`
+    - `timestamp`: `String`
+    - `wallet` : `String` - eos account name
+- `msg`: `String`
+
+##### Example
+
+```javascript
+tp.authSign({
+    blockchain: 'bos',
+    from: 'itokenpocket',
+    publicKey: 'EOS13we3sbereewwwwww',
+    signdata: 'something to sign'
+}).then(console.log)
+
+> {
+    result: true,
+    data: {
+        signature: 'SIG_EBEFWA-AFEBEf-eeee-aaaaa-eeeeea23d',
+        timestamp: '1534735280',
+        ref: 'TokenPocket',
+        signdata: 'something to sign',
+        wallet: 'itokenpocket'
+    },
+    msg: 'success'
+}
+```
