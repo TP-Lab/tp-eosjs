@@ -37,7 +37,7 @@ var _sendTpRequest = function (methodName, params, callback) {
 }
 
 var tp = {
-    version: '1.5.1',
+    version: '1.5.2',
     isConnected: function () {
         return !!(window.TPJSBrigeClient || (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.getDeviceId));
     },
@@ -430,7 +430,7 @@ var tp = {
                 }
             }
 
-            _sendTpRequest('eosTokenTransfer', JSON.stringify(params), tpCallbackFun);
+            _sendTpRequest('tokenTransfer', JSON.stringify(params), tpCallbackFun);
         })
     },
     pushAction: function (params) {
@@ -452,7 +452,7 @@ var tp = {
                 }
             }
 
-            _sendTpRequest('pushEosAction', JSON.stringify(params), tpCallbackFun);
+            _sendTpRequest('pushAction', JSON.stringify(params), tpCallbackFun);
 
         });
     },
@@ -470,7 +470,7 @@ var tp = {
                 }
             }
 
-            _sendTpRequest('getEosBalance', JSON.stringify(params), tpCallbackFun);
+            _sendTpRequest('getBalance', JSON.stringify(params), tpCallbackFun);
 
         });
     },
@@ -488,7 +488,7 @@ var tp = {
                 }
             }
 
-            _sendTpRequest('getEosAccountInfo', JSON.stringify(params), tpCallbackFun);
+            _sendTpRequest('getAccountInfo', JSON.stringify(params), tpCallbackFun);
 
         });
     },
@@ -509,7 +509,7 @@ var tp = {
                 }
             }
 
-            _sendTpRequest('getEosTransactionRecord', JSON.stringify(params), tpCallbackFun);
+            _sendTpRequest('getTransactionRecord', JSON.stringify(params), tpCallbackFun);
         })
     },
     authSign: function (params) {
