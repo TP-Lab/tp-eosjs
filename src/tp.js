@@ -224,6 +224,15 @@ var tp = {
     setMenubar: function (params) {
         _sendTpRequest('setMenubar', JSON.stringify(params), '');
     },
+    startChat: function (params) {
+        _sendTpRequest('startChat', JSON.stringify(params), '');
+    },
+    saveImage: function (params) {
+        _sendTpRequest('saveImage', JSON.stringify(params), '');
+    },
+    rollHorizontal: function (params) {
+        _sendTpRequest('rollHorizontal', JSON.stringify(params), '');
+    },
     // eos
     eosTokenTransfer: function (params) {
         // 必填项

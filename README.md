@@ -782,6 +782,86 @@ tp.setMenubar({
 ```
 
 
+#### 2.14 tp.startChat
+
+跳到TP聊天
+
+Open TP IM
+
+```javascript
+tp.startChat(params)
+```
+
+##### Parameters
+
+`params`- `Object`:
+
+- `sessionType`: `Number` 私聊是0  群聊是1
+- `account`: `String` 私聊是目标用户的账号(eos,iost等)或地址(eth,moac等)， 群聊是群的id
+- `blockChainId`: `Number` 只有私聊需要填， 私聊时目标用户的底层 1 for ETH, 2 for Jingtum, 3 MOAC, 4 for EOS , 5 for ENU, 6 for BOS, 7 for IOST
+
+##### Example
+
+```javascript
+tp.startChat({
+    account: 'itokenpocket', 
+    sessionType: 0,
+    blockChainId: 4
+});
+```
+
+
+#### 2.13 tp.saveImage
+
+保存图片
+
+Save image
+
+```javascript
+tp.saveImage(params)
+```
+
+##### Parameters
+
+`params`- `Object`:
+- `url`: `String` image's url
+
+
+##### Example
+
+```javascript
+tp.saveImage({
+    url: 'https://dapp.mytokenpocket.vip/tokenpocket_logo.png'
+});
+
+
+```
+#### 2.13 tp.rollHorizontal
+
+横屏
+
+rotate the screen horizontal
+
+```javascript
+tp.rollHorizontal(params)
+```
+
+##### Parameters
+
+`params`- `Object`:
+- `horizontal`: `Boolean`
+
+
+
+##### Example
+
+```javascript
+tp.rollHorizontal({
+    horizontal: true
+});
+```
+
+
 #### 3.1 tp.tokenTransfer
 
 ```javascript
