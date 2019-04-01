@@ -555,7 +555,7 @@ tp.invokeQRScanner().then(console.log)
 
 获取用户当前钱包
 
-`1` for ETH, `2` for Jingtum, `3` for MOAC, `4` for EOS , `5` for ENU
+`1` for ETH, `2` for Jingtum, `3` for MOAC, `4` for EOS , `5` for ENU, `6` for BOS, `7` for IOST
 
 ```javascript
 tp.getCurrentWallet()
