@@ -18,7 +18,7 @@ Javascript SDK for TokenPocket EOS Dapp
 
 * We also have an [Android&iOS SDK](https://github.com/TP-Lab/Mobile-SDK)
 
-##  1. <a name='Usage'></a>Usage
+## <a name='Usage'></a>Usage
 
 请在TokenPocket中使用该SDK。
 请在发现 -> DApp浏览器中 开发调试
@@ -42,52 +42,52 @@ Browser
 
 
 <!-- vscode-markdown-toc -->
-* 1. [Usage](#Usage)
-	* 1.1. [1.EOS](#EOS)
-		* 1.1.1. [1.1 tp.eosTokenTransfer](#tp.eosTokenTransfer)
-		* 1.1.2. [1.2 tp.pushEosAction](#tp.pushEosAction)
-		* 1.1.3. [1.3 tp.getEosBalance](#tp.getEosBalance)
-		* 1.1.4. [1.4 tp.getEosTableRows](#tp.getEosTableRows)
-		* 1.1.5. [1.5 tp.getEosAccountInfo](#tp.getEosAccountInfo)
-		* 1.1.6. [1.6 tp.getEosTransactionRecord](#tp.getEosTransactionRecord)
-		* 1.1.7. [1.7 tp.eosAuthSign](#tp.eosAuthSign)
-	* 1.2. [2. COMMON](#COMMON)
-		* 1.2.1. [2.1 tp.getAppInfo](#tp.getAppInfo)
-		* 1.2.2. [2.2 tp.getWalletList (Deprecated)](#tp.getWalletListDeprecated)
-		* 1.2.3. [2.3 tp.getDeviceId](#tp.getDeviceId)
-		* 1.2.4. [2.4 tp.shareNewsToSNS](#tp.shareNewsToSNS)
-		* 1.2.5. [2.5 tp.invokeQRScanner](#tp.invokeQRScanner)
-		* 1.2.6. [2.6 tp.getCurrentWallet  (Recommended)](#tp.getCurrentWalletRecommended)
-		* 1.2.7. [2.7 tp.getWallets  (Deprecated)](#tp.getWalletsDeprecated)
-		* 1.2.8. [2.8 tp.sign](#tp.sign)
-		* 1.2.9. [2.9 tp.back](#tp.back)
-		* 1.2.10. [2.10 tp.close](#tp.close)
-		* 1.2.11. [2.11 tp.fullScreen](#tp.fullScreen)
-		* 1.2.12. [2.12 tp.importWallet](#tp.importWallet)
-		* 1.2.13. [2.13 tp.setMenubar](#tp.setMenubar)
-		* 1.2.14. [2.14 tp.startChat](#tp.startChat)
-		* 1.2.15. [2.15 tp.saveImage](#tp.saveImage)
-		* 1.2.16. [2.16 tp.rollHorizontal](#tp.rollHorizontal)
-		* 1.2.17. [2.17 tp.popGestureRecognizerEnable](#tp.popGestureRecognizerEnable)
-	* 1.3. [3 EOS sidechain](#EOSsidechain)
-		* 1.3.1. [3.1 tp.tokenTransfer](#tp.tokenTransfer)
-		* 1.3.2. [3.2 tp.pushAction](#tp.pushAction)
-		* 1.3.3. [3.3 tp.getBalance](#tp.getBalance)
-		* 1.3.4. [3.4 tp.getTableRows](#tp.getTableRows)
-		* 1.3.5. [3.5 tp.getAccountInfo](#tp.getAccountInfo)
-		* 1.3.6. [3.6 tp.getTransactionRecord](#tp.getTransactionRecord)
-		* 1.3.7. [3.7 tp.authSign](#tp.authSign)
+* [Usage](#Usage)
+	* [1.EOS](#EOS)
+		* [1.1 tp.eosTokenTransfer](#tp.eosTokenTransfer)
+		* [1.2 tp.pushEosAction](#tp.pushEosAction)
+		* [1.3 tp.getEosBalance](#tp.getEosBalance)
+		* [1.4 tp.getEosTableRows](#tp.getEosTableRows)
+		* [1.5 tp.getEosAccountInfo](#tp.getEosAccountInfo)
+		* [1.6 tp.getEosTransactionRecord](#tp.getEosTransactionRecord)
+		* [1.7 tp.eosAuthSign](#tp.eosAuthSign)
+	* [2. COMMON](#COMMON)
+		* [2.1 tp.getAppInfo](#tp.getAppInfo)
+		* [2.2 tp.getWalletList (Deprecated)](#tp.getWalletListDeprecated)
+		* [2.3 tp.getDeviceId](#tp.getDeviceId)
+		* [2.4 tp.shareNewsToSNS](#tp.shareNewsToSNS)
+		* [2.5 tp.invokeQRScanner](#tp.invokeQRScanner)
+		* [2.6 tp.getCurrentWallet  (Recommended)](#tp.getCurrentWalletRecommended)
+		* [2.7 tp.getWallets  (Deprecated)](#tp.getWalletsDeprecated)
+		* [2.8 tp.sign](#tp.sign)
+		* [2.9 tp.back](#tp.back)
+		* [2.10 tp.close](#tp.close)
+		* [2.11 tp.fullScreen](#tp.fullScreen)
+		* [2.12 tp.importWallet](#tp.importWallet)
+		* [2.13 tp.setMenubar](#tp.setMenubar)
+		* [2.14 tp.startChat](#tp.startChat)
+		* [2.15 tp.saveImage](#tp.saveImage)
+		* [2.16 tp.rollHorizontal](#tp.rollHorizontal)
+		* [2.17 tp.popGestureRecognizerEnable](#tp.popGestureRecognizerEnable)
+	* [3 EOS sidechain](#EOSsidechain)
+		* [3.1 tp.tokenTransfer](#tp.tokenTransfer)
+		* [3.2 tp.pushAction](#tp.pushAction)
+		* [3.3 tp.getBalance](#tp.getBalance)
+		* [3.4 tp.getTableRows](#tp.getTableRows)
+		* [3.5 tp.getAccountInfo](#tp.getAccountInfo)
+		* [3.6 tp.getTransactionRecord](#tp.getTransactionRecord)
+		* [3.7 tp.authSign](#tp.authSign)
 
 <!-- vscode-markdown-toc-config
-	numbering=true
+	numbering=false
 	autoSave=true
 	/vscode-markdown-toc-config -->
 <!-- /vscode-markdown-toc -->
 
 
-###  1.1. <a name='EOS'></a>1.EOS
+### <a name='EOS'></a>1.EOS
 
-####  1.1.1. <a name='tp.eosTokenTransfer'></a>1.1 tp.eosTokenTransfer
+#### <a name='tp.eosTokenTransfer'></a>1.1 tp.eosTokenTransfer
 
 ```javascript
 tp.eosTokenTransfer(params)
@@ -136,7 +136,7 @@ tp.eosTokenTransfer({
 
 
 
-####  1.1.2. <a name='tp.pushEosAction'></a>1.2 tp.pushEosAction
+#### <a name='tp.pushEosAction'></a>1.2 tp.pushEosAction
 
 ```javascript
 tp.pushEosAction(params)
@@ -204,7 +204,7 @@ tp.pushEosAction({
 ```
 
 
-####  1.1.3. <a name='tp.getEosBalance'></a>1.3 tp.getEosBalance
+#### <a name='tp.getEosBalance'></a>1.3 tp.getEosBalance
 
 ```javascript
 tp.getEosBalance(params)
@@ -245,7 +245,7 @@ tp.getEosBalance({
 ```
 
 
-####  1.1.4. <a name='tp.getEosTableRows'></a>1.4 tp.getEosTableRows
+#### <a name='tp.getEosTableRows'></a>1.4 tp.getEosTableRows
 
 获取合约内table数据
 
@@ -298,7 +298,7 @@ tp.getEosTableRows({
 }
 ```
 
-####  1.1.5. <a name='tp.getEosAccountInfo'></a>1.5 tp.getEosAccountInfo
+#### <a name='tp.getEosAccountInfo'></a>1.5 tp.getEosAccountInfo
 ```javascript
 tp.getEosAccountInfo(params)
 ```
@@ -329,7 +329,7 @@ tp.getEosAccountInfo({
 }
 ```
 
-####  1.1.6. <a name='tp.getEosTransactionRecord'></a>1.6 tp.getEosTransactionRecord
+#### <a name='tp.getEosTransactionRecord'></a>1.6 tp.getEosTransactionRecord
 
 ```javascript
 tp.getEosTransactionRecord(params)
@@ -394,7 +394,7 @@ tp.getEosTransactionRecord({
 ```
 
 
-####  1.1.7. <a name='tp.eosAuthSign'></a>1.7 tp.eosAuthSign
+#### <a name='tp.eosAuthSign'></a>1.7 tp.eosAuthSign
 
 ```javascript
 tp.eosAuthSign(params)
@@ -448,9 +448,9 @@ tp.eosAuthSign({
 
 
 
-###  1.2. <a name='COMMON'></a>2. COMMON
+### <a name='COMMON'></a>2. COMMON
 
-####  1.2.1. <a name='tp.getAppInfo'></a>2.1 tp.getAppInfo
+#### <a name='tp.getAppInfo'></a>2.1 tp.getAppInfo
 
 ```javascript
 tp.getAppInfo()
@@ -484,7 +484,7 @@ tp.getAppInfo().then(console.log)
 }
 ```
 
-####  1.2.2. <a name='tp.getWalletListDeprecated'></a>2.2 tp.getWalletList (Deprecated)
+#### <a name='tp.getWalletListDeprecated'></a>2.2 tp.getWalletList (Deprecated)
 
 ```javascript
 tp.getWalletList(params)
@@ -519,7 +519,7 @@ tp.getWalletList('eth').then(console.log)
 }
 ```
 
-####  1.2.3. <a name='tp.getDeviceId'></a>2.3 tp.getDeviceId
+#### <a name='tp.getDeviceId'></a>2.3 tp.getDeviceId
 
 ```javascript
 tp.getDeviceId()
@@ -540,7 +540,7 @@ tp.getDeviceId().then(console.log)
 }
 ```
 
-####  1.2.4. <a name='tp.shareNewsToSNS'></a>2.4 tp.shareNewsToSNS
+#### <a name='tp.shareNewsToSNS'></a>2.4 tp.shareNewsToSNS
 
 分享
 share to SNS
@@ -570,7 +570,7 @@ tp.shareNewsToSNS({
 ```
 
 
-####  1.2.5. <a name='tp.invokeQRScanner'></a>2.5 tp.invokeQRScanner
+#### <a name='tp.invokeQRScanner'></a>2.5 tp.invokeQRScanner
 
 扫码
 Scan the QRcode
@@ -591,7 +591,7 @@ tp.invokeQRScanner().then(console.log)
 > "abcdefg"
 ```
 
-####  1.2.6. <a name='tp.getCurrentWalletRecommended'></a>2.6 tp.getCurrentWallet  (Recommended)
+#### <a name='tp.getCurrentWalletRecommended'></a>2.6 tp.getCurrentWallet  (Recommended)
 
 获取用户当前钱包
 
@@ -630,7 +630,7 @@ tp.getCurrentWallet().then(console.log)
 ```
 
 
-####  1.2.7. <a name='tp.getWalletsDeprecated'></a>2.7 tp.getWallets  (Deprecated)
+#### <a name='tp.getWalletsDeprecated'></a>2.7 tp.getWallets  (Deprecated)
 
 获取用户钱包列表
 Get user's wallet list
@@ -674,7 +674,7 @@ tp.getWallets().then(console.log)
 }
 ```
 
-####  1.2.8. <a name='tp.sign'></a>2.8 tp.sign
+#### <a name='tp.sign'></a>2.8 tp.sign
 
 ```javascript
 tp.sign(params)
@@ -717,7 +717,7 @@ tp.sign({
 ```
 
 
-####  1.2.9. <a name='tp.back'></a>2.9 tp.back
+#### <a name='tp.back'></a>2.9 tp.back
 
 页面后退一页
 back forward
@@ -733,7 +733,7 @@ tp.back()
 
 ```
 
-####  1.2.10. <a name='tp.close'></a>2.10 tp.close
+#### <a name='tp.close'></a>2.10 tp.close
 
 关闭当前Dapp页面
 close the dapp
@@ -750,7 +750,7 @@ tp.close()
 ```
 
 
-####  1.2.11. <a name='tp.fullScreen'></a>2.11 tp.fullScreen
+#### <a name='tp.fullScreen'></a>2.11 tp.fullScreen
 
 全屏应用
 fullScreen the dapp
@@ -774,7 +774,7 @@ tp.fullScreen({
 ```
 
 
-####  1.2.12. <a name='tp.importWallet'></a>2.12 tp.importWallet
+#### <a name='tp.importWallet'></a>2.12 tp.importWallet
 
 钱包导入界面 
 
@@ -796,7 +796,7 @@ tp.importWallet('eos');
 ```
 
 
-####  1.2.13. <a name='tp.setMenubar'></a>2.13 tp.setMenubar
+#### <a name='tp.setMenubar'></a>2.13 tp.setMenubar
 
 全屏时 设置dapp浏览器导航条可见性
 
@@ -822,7 +822,7 @@ tp.setMenubar({
 ```
 
 
-####  1.2.14. <a name='tp.startChat'></a>2.14 tp.startChat
+#### <a name='tp.startChat'></a>2.14 tp.startChat
 
 跳到TP聊天
 
@@ -851,7 +851,7 @@ tp.startChat({
 ```
 
 
-####  1.2.15. <a name='tp.saveImage'></a>2.15 tp.saveImage
+#### <a name='tp.saveImage'></a>2.15 tp.saveImage
 
 保存图片
 
@@ -876,7 +876,7 @@ tp.saveImage({
 
 
 ```
-####  1.2.16. <a name='tp.rollHorizontal'></a>2.16 tp.rollHorizontal
+#### <a name='tp.rollHorizontal'></a>2.16 tp.rollHorizontal
 
 横屏
 
@@ -902,7 +902,7 @@ tp.rollHorizontal({
 ```
 
 
-####  1.2.17. <a name='tp.popGestureRecognizerEnable'></a>2.17 tp.popGestureRecognizerEnable
+#### <a name='tp.popGestureRecognizerEnable'></a>2.17 tp.popGestureRecognizerEnable
 
 禁用iOS默认右滑后退的手势操作，对安卓无影响
 
@@ -928,10 +928,10 @@ tp.popGestureRecognizerEnable({
 });
 ```
 
-###  1.3. <a name='EOSsidechain'></a>3 EOS sidechain
+### <a name='EOSsidechain'></a>3 EOS sidechain
 
 
-####  1.3.1. <a name='tp.tokenTransfer'></a>3.1 tp.tokenTransfer
+#### <a name='tp.tokenTransfer'></a>3.1 tp.tokenTransfer
 
 ```javascript
 tp.tokenTransfer(params)
@@ -982,7 +982,7 @@ tp.tokenTransfer({
 
 
 
-####  1.3.2. <a name='tp.pushAction'></a>3.2 tp.pushAction
+#### <a name='tp.pushAction'></a>3.2 tp.pushAction
 
 ```javascript
 tp.pushAction(params)
@@ -1052,7 +1052,7 @@ tp.pushAction({
 ```
 
 
-####  1.3.3. <a name='tp.getBalance'></a>3.3 tp.getBalance
+#### <a name='tp.getBalance'></a>3.3 tp.getBalance
 
 ```javascript
 tp.getBalance(params)
@@ -1094,7 +1094,7 @@ tp.getBalance({
 }
 ```
 
-####  1.3.4. <a name='tp.getTableRows'></a>3.4 tp.getTableRows 
+#### <a name='tp.getTableRows'></a>3.4 tp.getTableRows 
 
 获取合约内table数据
 
@@ -1148,7 +1148,7 @@ tp.getTableRows({
 }
 ```
 
-####  1.3.5. <a name='tp.getAccountInfo'></a>3.5 tp.getAccountInfo
+#### <a name='tp.getAccountInfo'></a>3.5 tp.getAccountInfo
 ```javascript
 tp.getAccountInfo(params)
 ```
@@ -1181,7 +1181,7 @@ tp.getEosAccountInfo({
 }
 ```
 
-####  1.3.6. <a name='tp.getTransactionRecord'></a>3.6 tp.getTransactionRecord
+#### <a name='tp.getTransactionRecord'></a>3.6 tp.getTransactionRecord
 
 ```javascript
 tp.getTransactionRecord(params)
@@ -1248,7 +1248,7 @@ tp.getEosTransactionRecord({
 ```
 
 
-####  1.3.7. <a name='tp.authSign'></a>3.7 tp.authSign
+#### <a name='tp.authSign'></a>3.7 tp.authSign
 
 ```javascript
 tp.authSign(params)
