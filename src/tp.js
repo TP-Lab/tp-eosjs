@@ -5,7 +5,9 @@ var TYPE_MAP = {
     jingtum: '2',
     moac: '3',
     eos: '4',
-    enu: '5'
+    enu: '5',
+    bos: '6',
+    iost: '7'
 };
 
 var _getTypeByStr = function _getTypeByStr(typeStr) {
@@ -37,7 +39,7 @@ var _sendTpRequest = function (methodName, params, callback) {
 }
 
 var tp = {
-    version: '1.5.2',
+    version: '1.6.0',
     isConnected: function () {
         return !!(window.TPJSBrigeClient || (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.getDeviceId));
     },
@@ -232,6 +234,9 @@ var tp = {
     },
     rollHorizontal: function (params) {
         _sendTpRequest('rollHorizontal', JSON.stringify(params), '');
+    },
+    popGestureRecognizerEnable: function (params) {
+        _sendTpRequest('popGestureRecognizerEnable', JSON.stringify(params), '');
     },
     // eos
     eosTokenTransfer: function (params) {

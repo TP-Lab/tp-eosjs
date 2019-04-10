@@ -811,7 +811,7 @@ tp.startChat({
 ```
 
 
-#### 2.13 tp.saveImage
+#### 2.15 tp.saveImage
 
 保存图片
 
@@ -836,7 +836,7 @@ tp.saveImage({
 
 
 ```
-#### 2.13 tp.rollHorizontal
+#### 2.16 tp.rollHorizontal
 
 横屏
 
@@ -858,6 +858,33 @@ tp.rollHorizontal(params)
 ```javascript
 tp.rollHorizontal({
     horizontal: true
+});
+```
+
+
+#### 2.17 tp.popGestureRecognizerEnable
+
+禁用iOS默认右滑后退的手势操作，对安卓无影响
+
+Disable the iOS default gesture operation: right sliding backward. There is no effect on Android
+
+
+```javascript
+tp.popGestureRecognizerEnable(params)
+```
+
+##### Parameters
+
+`params`- `Object`:
+- `enable`: `Boolean` - default: `true`
+
+
+
+##### Example
+
+```javascript
+tp.popGestureRecognizerEnable({
+    enable: false
 });
 ```
 
