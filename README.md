@@ -904,10 +904,9 @@ tp.rollHorizontal({
 
 #### <a name='tp.popGestureRecognizerEnable'></a>2.17 tp.popGestureRecognizerEnable
 
-禁用iOS默认右滑后退的手势操作，对安卓无影响
+禁止iOS自带的左滑手势返回，对安卓无影响
 
-Disable the iOS default gesture operation: right sliding backward. There is no effect on Android
-
+Disable iOS's left-sliding gesture to return. There is no effect on Android
 
 ```javascript
 tp.popGestureRecognizerEnable(params)
@@ -927,6 +926,33 @@ tp.popGestureRecognizerEnable({
     enable: false
 });
 ```
+
+#### 2.18 tp.forwardNavigationGesturesEnable
+
+禁止webview自带的左滑手势触发goback, 对安卓无影响
+
+Disable the left sliding gesture by WebView to trigger goback. There is no effect on Android
+
+```javascript
+tp.forwardNavigationGesturesEnable(params)
+```
+
+##### Parameters
+
+`params`- `Object`:
+- `enable`: `Boolean` - default: `true`
+
+
+
+##### Example
+
+```javascript
+tp.forwardNavigationGesturesEnable({
+    enable: false
+});
+```
+
+
 
 ### <a name='EOSsidechain'></a>3 EOS sidechain
 

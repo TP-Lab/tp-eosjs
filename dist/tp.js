@@ -912,7 +912,7 @@ var _sendTpRequest = function (methodName, params, callback) {
 }
 
 var tp = {
-    version: '1.6.0',
+    version: '1.6.1',
     isConnected: function () {
         return !!(window.TPJSBrigeClient || (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.getDeviceId));
     },
@@ -1110,6 +1110,9 @@ var tp = {
     },
     popGestureRecognizerEnable: function (params) {
         _sendTpRequest('popGestureRecognizerEnable', JSON.stringify(params), '');
+    },
+    forwardNavigationGesturesEnable: function (params) {
+        _sendTpRequest('forwardNavigationGesturesEnable', JSON.stringify(params), '');
     },
     // eos
     eosTokenTransfer: function (params) {
