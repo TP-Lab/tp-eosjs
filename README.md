@@ -409,6 +409,8 @@ tp.eosAuthSign(params)
 
 
 ##### Returns
+- Verify the `timestamp+wallet+signdata+ref` string.
+- 按照 timestamp+wallet+signdata+ref的顺序拼接字符串校验签名
 
 `Object`:
 - `result`: `Boolean`
